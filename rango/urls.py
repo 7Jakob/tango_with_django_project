@@ -1,10 +1,20 @@
 from django.urls import path
 from rango import views
 
+from django.shortcuts import render, redirect
+from django.urls import reverse
+from rango.models import Category, Page
+from rango.forms import CategoryForm, PageForm
+
+
 app_name = 'rango'
 
 urlpatterns = [
     path('', views.index, name='index'),
     path('about/', views.about, name='about'),
+
+    path('add_category/', views.add_category, name='add_category'),
+
     path('category/<slug:category_name_slug>/', views.show_category, name='show_category'),
+    path('category/<slug:category_name_slug>/add_page/', views.add_page, name='add_page'),
 ]
