@@ -25,13 +25,13 @@ def add_cat(name, views=0, likes=0):
 
 def populate():
     python_pages = [
-        {'title': 'Official Python Tutorial', 'url': 'https://docs.python.org/3/tutorial/', 'views': 128},
+        {'title': 'Official Python Tutorial', 'url': 'http://docs.python.org/3/tutorial/', 'views': 128},
         {'title': 'How to Think like a Computer Scientist', 'url': 'http://www.greenteapress.com/thinkpython/', 'views': 64},
         {'title': 'Learn Python in 10 Minutes', 'url': 'http://www.korokithakis.net/tutorials/python/', 'views': 32},
     ]
 
     django_pages = [
-        {'title': 'Official Django Tutorial', 'url': 'https://docs.djangoproject.com/en/2.2/intro/tutorial01/', 'views': 128},
+        {'title': 'Official Django Tutorial', 'url': 'https://docs.djangoproject.com/en/2.1/intro/tutorial01/', 'views': 128},
         {'title': 'Django Rocks', 'url': 'http://www.djangorocks.com/', 'views': 64},
         {'title': 'How to Tango with Django', 'url': 'http://www.tangowithdjango.com/', 'views': 32},
     ]
