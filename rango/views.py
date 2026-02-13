@@ -3,6 +3,7 @@ from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
+from django.utils import timezone
 
 from rango.forms import UserForm, UserProfileForm
 
@@ -21,6 +22,11 @@ def decode_url(name):
 
 
 def index(request):
+    visits = request.session.get('visits', 0)
+    request.session['visits'] = visits + 1
+    
+    request.session['last_visit'] = timezone.now().strftime('%Y-%m-%d %H:%M:%S')
+
     category_list = Category.objects.order_by('-likes')[:5]
     page_list = Page.objects.order_by('-views')[:5]
 
@@ -115,7 +121,13 @@ def show_category(request, category_name_slug):
 
 
 def about(request):
-    return render(request, 'rango/about.html')
+    # Get current visits (default 0), then increment
+    visits = request.session.get('visits', 0)
+    visits += 1
+    request.session['visits'] = visits
+
+    context_dict = {'visits': visits}
+    return render(request, 'rango/about.html', context=context_dict)
 
 @login_required
 def add_category(request):
